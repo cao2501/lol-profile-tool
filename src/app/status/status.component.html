@@ -1,0 +1,16 @@
+<main>
+<mat-form-field appearance="fill">
+  <mat-label>Enter custom status message (or choose a status mode below)</mat-label>
+  <textarea matInput [(ngModel)]="text"></textarea>
+</mat-form-field>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+    <button mat-raised-button color="primary" (click)="setStatus()">Set Online Status</button>
+    <button mat-raised-button color="accent" (click)="setMobile()">Set Mobile Status</button>
+    <button mat-raised-button (click)="setAway()">Set Away Status</button>
+    <button mat-raised-button (click)="setOffline()">Set Invisible / Offline</button>
+    <button mat-raised-button color="warn" (click)="clearStatus()">Clear Status</button>
+  </div>
+</main>
+
+
+
