@@ -1,0 +1,199 @@
+main {
+  padding: 10px;
+}
+
+.tab-switcher {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 4px;
+}
+
+.tab-switcher button {
+  padding: 8px 18px;
+  border: none;
+  background: #2a2a3e;
+  color: #aaa;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.tab-switcher button:hover {
+  background: #3a3a5e;
+  color: #ddd;
+}
+
+.tab-switcher button.active {
+  background: #6c63ff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-title {
+  color: #e0e0ff;
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.controls-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  align-items: flex-end;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.control-group label {
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+.control-group input[type="file"] {
+  font-size: 12px;
+  color: #ddd;
+  padding: 4px;
+}
+
+.control-group input[type="range"] {
+  width: 150px;
+  accent-color: #6c63ff;
+}
+
+.control-group select {
+  background: #2a2a3e;
+  color: #ddd;
+  border: 1px solid #444;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.checkbox-group {
+  justify-content: center;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.checkbox-group input[type="checkbox"] {
+  accent-color: #6c63ff;
+  width: 16px;
+  height: 16px;
+}
+
+.output-section {
+  margin-top: 12px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 12px;
+  background: #1a1a2e;
+}
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.output-header h4 {
+  margin: 0;
+  color: #e0e0ff;
+  font-size: 14px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-buttons button {
+  font-size: 12px;
+  padding: 4px 12px;
+  min-height: 30px;
+  line-height: 1;
+}
+
+.braille-output {
+  background: #0d0d1a;
+  color: #e0e0e0;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 45vh;
+  font-family: 'Segoe UI', 'Consolas', monospace;
+  font-size: 10px;
+  line-height: 1.1;
+  letter-spacing: 0px;
+  white-space: pre;
+  margin: 0;
+  user-select: all;
+  border: 1px solid #222;
+}
+
+.braille-output.text-braille {
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: 2px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.full-width textarea {
+  height: 120px;
+}
+
+.braille-info {
+  margin-top: 16px;
+  padding: 12px;
+  background: #1e1e3a;
+  border-radius: 8px;
+  border: 1px solid #2a2a4e;
+}
+
+.braille-info h4 {
+  margin: 0 0 8px 0;
+  color: #e0e0ff;
+  font-size: 14px;
+}
+
+.braille-info ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.braille-info li {
+  color: #bbb;
+}

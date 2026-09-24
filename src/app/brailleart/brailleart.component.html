@@ -1,0 +1,89 @@
+<main>
+  <!-- Tab Switcher -->
+  <div class="tab-switcher">
+    <button [class.active]="activeTab === 'image'" (click)="activeTab = 'image'">🖼️ Ảnh → Braille</button>
+    <button [class.active]="activeTab === 'text'" (click)="activeTab = 'text'">🔤 Chữ → Braille</button>
+  </div>
+
+  <!-- IMAGE TO BRAILLE TAB -->
+  <div *ngIf="activeTab === 'image'" class="tab-content">
+    <h3 class="section-title">Chuyển ảnh thành Braille Art</h3>
+
+    <div class="controls-row">
+      <div class="control-group">
+        <label for="braille-file-input">Chọn ảnh:</label>
+        <input type="file" id="braille-file-input" accept=".png,.jpg,.jpeg,.gif,.bmp,.webp" (change)="onFileSelected($event)">
+      </div>
+    </div>
+
+    <div class="controls-row">
+      <div class="control-group">
+        <label>Chiều rộng (ký tự): {{imageWidth}}</label>
+        <input type="range" min="20" max="120" step="5" [(ngModel)]="imageWidth" (change)="regenerate()">
+      </div>
+
+      <div class="control-group">
+        <label>Ngưỡng sáng: {{threshold}}</label>
+        <input type="range" min="0" max="255" step="1" [(ngModel)]="threshold" (change)="regenerate()">
+      </div>
+
+      <div class="control-group">
+        <label>Dithering:</label>
+        <select [(ngModel)]="ditherMode" (change)="regenerate()">
+          <option value="floydSteinberg">Floyd-Steinberg</option>
+          <option value="atkinson">Atkinson</option>
+          <option value="none">Không dither</option>
+        </select>
+      </div>
+
+      <div class="control-group checkbox-group">
+        <label>
+          <input type="checkbox" [(ngModel)]="invert" (change)="regenerate()">
+          Đảo màu
+        </label>
+      </div>
+    </div>
+
+    <div class="output-section" *ngIf="brailleOutput">
+      <div class="output-header">
+        <h4>Kết quả:</h4>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" (click)="copyToClipboard(brailleOutput)">📋 Copy</button>
+          <button mat-raised-button color="accent" (click)="applyAsStatus(brailleOutput)">✨ Đặt làm Status</button>
+        </div>
+      </div>
+      <pre class="braille-output">{{brailleOutput}}</pre>
+    </div>
+  </div>
+
+  <!-- TEXT TO BRAILLE TAB -->
+  <div *ngIf="activeTab === 'text'" class="tab-content">
+    <h3 class="section-title">Chuyển chữ thành ký tự Braille</h3>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nhập văn bản cần chuyển đổi...</mat-label>
+      <textarea matInput [(ngModel)]="textInput" rows="5" (ngModelChange)="convertTextToBraille()"></textarea>
+    </mat-form-field>
+
+    <div class="output-section" *ngIf="brailleTextOutput">
+      <div class="output-header">
+        <h4>Kết quả Braille:</h4>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" (click)="copyToClipboard(brailleTextOutput)">📋 Copy</button>
+          <button mat-raised-button color="accent" (click)="applyAsStatus(brailleTextOutput)">✨ Đặt làm Status</button>
+        </div>
+      </div>
+      <pre class="braille-output text-braille">{{brailleTextOutput}}</pre>
+    </div>
+
+    <div class="braille-info">
+      <h4>ℹ️ Hỗ trợ chuyển đổi:</h4>
+      <ul>
+        <li>Chữ cái a-z → ký tự Braille tương ứng</li>
+        <li>Số 0-9 → ký tự Braille tương ứng</li>
+        <li>Dấu câu phổ biến (.,:;!?-)</li>
+        <li>Ký tự tiếng Việt (có dấu) sẽ được giữ nguyên</li>
+      </ul>
+    </div>
+  </div>
+</main>
